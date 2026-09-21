@@ -1,0 +1,5 @@
+{
+  "nav": { "shop": "Shop", "orders": "Orders", "dashboard": "Dashboard", "logout": "Log out" },
+  "auth": { "login": "Log in", "register": "Create account", "email": "Email", "password": "Password" },
+  "buyer": { "addToCart": "Add to cart", "placeOrder": "Place order" }
+}

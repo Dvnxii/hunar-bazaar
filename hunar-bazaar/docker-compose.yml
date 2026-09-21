@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:7
+    ports: ["27017:27017"]
+    volumes: [mongo_data:/data/db]
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      # crypto/ is bind-mounted as build context via the ../crypto COPY in Dockerfile;
+      # if your Docker version rejects COPY from outside context, build crypto/ separately
+      # and copy qr_crypto into backend/bin/ before `docker compose build`.
+    env_file: ./backend/.env
+    environment:
+      MONGO_URI: mongodb://mongo:27017
+      REDIS_URL: redis://redis:6379/0
+    ports: ["8000:8000"]
+    depends_on: [mongo, redis]
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports: ["4173:4173"]
+    depends_on: [backend]
+
+volumes:
+  mongo_data:

@@ -1,0 +1,5 @@
+{
+  "nav": { "shop": "खरीदें", "orders": "ऑर्डर", "dashboard": "डैशबोर्ड", "logout": "लॉग आउट" },
+  "auth": { "login": "लॉग इन करें", "register": "खाता बनाएं", "email": "ईमेल", "password": "पासवर्ड" },
+  "buyer": { "addToCart": "कार्ट में डालें", "placeOrder": "ऑर्डर करें" }
+}
